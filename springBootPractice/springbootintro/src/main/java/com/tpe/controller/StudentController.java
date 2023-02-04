@@ -1,12 +1,18 @@
 package com.tpe.controller;
 
 import com.tpe.domain.Student;
+import com.tpe.dto.StudentDTO;
 import com.tpe.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -74,5 +80,60 @@ public class StudentController {
         map.put("status", "ture");
         return new ResponseEntity<>(map, HttpStatus.OK); //return ResponseEntity.ok(map)
     }
+    //what we need for update student???
+    //1. id
+    //2. student object from user side
+
+    @PutMapping("{id}") //http://localhost:8080/students/1 +put +JSON
+    public ResponseEntity<Map<String, String>> updateStudent(@PathVariable("id") Long id,
+                                                             @Valid @RequestBody StudentDTO studentDTO){
+        studentService.updateStudent(id, studentDTO);
+        Map<String, String> map= new HashMap<>(); // why we are not autowiring this?? because this is used once
+        map.put("message", "Student is updated successfully");
+        map.put("status", "ture");
+        return new ResponseEntity<>(map, HttpStatus.OK); //return ResponseEntity.ok(map)
+    }
+
+    //pageable
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<Student>> getAllWithPage(@RequestParam ("page")int page, //page numbers starting from 0
+                                                        @RequestParam ("size") int size, //how many students per page
+                                                        @RequestParam("sort") String prop, //sorting filed
+                                                        @RequestParam("direction")Sort.Direction direction){ //assecning or desce
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, prop));
+        Page<Student> studentPage = studentService.getAllStudentWithPage(pageable);
+        return ResponseEntity.ok(studentPage);
+    }
+    //get by lastName
+
+    @GetMapping("/querylastname")     //http://localhost:8080/students/querylastname +GET
+    public ResponseEntity<List<Student>> getStudentByLastName(@RequestParam ("lastName") String lastName){
+        List<Student> list = studentService.findStudent(lastName);
+        return ResponseEntity.ok(list);
+
+    }
+
+    //get all student by grade (JPQL) Java Persistence Query Language
+
+    @GetMapping("/grade/{grade}")  //http://localhost:8080/students/grade/89 + GET
+    public ResponseEntity<List<Student>> getStudentByGrade(@PathVariable ("grade") Integer grade){
+
+        List<Student> list = studentService.getStudentByGrade(grade);
+        return ResponseEntity.ok(list);
+
+    }
+
+    //Can we get data as DTO from fram DB?
+
+    @GetMapping("/query/dtp")  //http://localhost:8080/students/query/dtp?id=1
+    public ResponseEntity<StudentDTO> getStudentDTO(@RequestParam("id") Long id){
+        StudentDTO studentDTO = studentService.findStudentDTOById(id);
+        return ResponseEntity.ok(studentDTO);
+    }
+
+
+
+
 
 }
