@@ -3,6 +3,8 @@ package com.tpe.controller;
 import com.tpe.domain.Student;
 import com.tpe.dto.StudentDTO;
 import com.tpe.service.StudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -22,6 +25,7 @@ import java.util.Map;
 @RequestMapping("/students") //http://localhostL8080/students dispatcher servlet will send it here
 public class StudentController {
 
+    Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     @Autowired
     private StudentService studentService;
@@ -133,6 +137,11 @@ public class StudentController {
     }
 
 
+    @GetMapping("/welcome")  //http://localhost:8080/students/welcome + get
+    public String weclcome(HttpServletRequest request){
+        logger.warn("--------------Welcome{}", request.getServletPath());
+        return "Welcome to Student controller!";
+    }
 
 
 

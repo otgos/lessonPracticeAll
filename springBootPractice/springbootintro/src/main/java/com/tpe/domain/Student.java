@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -39,6 +41,8 @@ public class Student {
     @Setter(AccessLevel.NONE)
     private LocalDateTime createdDate = LocalDateTime.now();
 
+    @OneToMany(mappedBy = "student")
+    private List<Book> books = new ArrayList<>();
 
 
 
