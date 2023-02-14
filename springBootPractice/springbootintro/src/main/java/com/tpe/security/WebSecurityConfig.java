@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //to make security active in the class
 //@EnableGlobalMethodSecurity(prePostEnabled = true) //security will be enabled in mehtod base...
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().
+        http.csrf().disable().  //Cross Site Request Forgery
                 authorizeHttpRequests().
                 antMatchers("/", "index.html", "/css/*", "js/*", "/register").permitAll().
                 and().

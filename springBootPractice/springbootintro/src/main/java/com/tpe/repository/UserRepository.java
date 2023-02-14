@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
+    //how can i find user ?
     Optional<User> findByUserName(String userName) throws ResourceNotFoundException;
 }

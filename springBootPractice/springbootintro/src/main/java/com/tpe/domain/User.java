@@ -36,9 +36,12 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)  // when i call users, i also want to see its roles..
     @JoinTable(name="t_user_role",
     joinColumns = @JoinColumn(name="user_id"),
-    inverseJoinColumns = @JoinColumn(name="role_id"))
+    inverseJoinColumns =  @JoinColumn(name="role_id"))
+    //make list and ask what is the issue, then set to SET
     private Set<Role> roles = new HashSet<>();
 
+
+    //what should be user and student relation...?
 
     @JsonIgnore
     @OneToOne(mappedBy = "user")

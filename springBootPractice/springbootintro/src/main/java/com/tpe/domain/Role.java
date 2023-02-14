@@ -23,6 +23,7 @@ public class Role {
     @Column(length = 30, nullable = false)
     private UserRole name;
 
+    //get toString but bring only the name
     @Override
     public String toString() {
         return "Role{" +
