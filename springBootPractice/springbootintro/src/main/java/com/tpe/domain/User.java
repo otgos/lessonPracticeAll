@@ -42,9 +42,9 @@ public class User {
 
 
     //what should be user and student relation...?
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "user")
-    private Student student;
+//
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "user")
+//    private Student student;
 
 }

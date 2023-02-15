@@ -36,7 +36,7 @@ public class StudentController {
     // we are going to create json data
     // return json + http status code
     @GetMapping //http://localhost:8080/students +Get
-    //@PreAuthorize("hasRole('ADMIN')") //ROLE_ADMIN ROLE_can be omitter
+    //@PreAuthorize("hasRole('ADMIN')") //ROLE_ADMIN ROLE_can be omitted by hasRole
     public ResponseEntity<List<Student>> getAll(){ // i will aslo return http status code
         List<Student> students = studentService.getAllStudents();
         return ResponseEntity.ok(students); // OK is for 200 status code

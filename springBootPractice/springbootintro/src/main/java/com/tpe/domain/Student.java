@@ -44,9 +44,9 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private List<Book> books = new ArrayList<>();
 
-    @JoinColumn(name="user_id")
-    @OneToOne
-    private User user;
+//    @JoinColumn(name="user_id")
+//    @OneToOne
+//    private User user;
 
 
 }
