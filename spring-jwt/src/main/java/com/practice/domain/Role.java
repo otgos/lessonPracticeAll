@@ -1,6 +1,6 @@
 package com.practice.domain;
 
-import com.tpe.domain.enums.UserRole;
+import com.practice.domain.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
