@@ -1,0 +1,7 @@
+
+
+Agency sends updates to registered channels
+
+1. INterface Channel
+2. NewChannels implements Channel
+3. NewsAgency class

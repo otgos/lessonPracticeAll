@@ -1,0 +1,16 @@
+realLifeExample
+1. Pilots tying to land they should wait for the
+confirmation from air traffic control tower
+
+2. Traffic lights that control cross roads
+
+3. Different scientist group ask question into middle, responsible class should reply
+
+3. Where do we use this?? Dispatcher Servlet
+
+
+1. Create interface Teacher/Expert Class
+2. interface Dispatcher
+3. MessageTeacher implements Teacher
+4. MessageDispatcher implements Dispatcher
+5. MediatorRunnerCLass

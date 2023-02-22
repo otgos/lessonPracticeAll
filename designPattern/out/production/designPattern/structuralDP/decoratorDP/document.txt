@@ -1,0 +1,16 @@
+there will be all features,
+but we need to limit them for
+
+1. Phone interface
+  all phone methods should be there
+
+2. Create Iphone Class which implement from the Phone
+
+3. PhoneDecorator implements from Phone
+why?? i am going to create all models from decorator class
+classes should be affected by each other on minimum base.. loose coupling...
+
+
+now we create IPhones extends frm Phone decorator
+
+4.Iphone11

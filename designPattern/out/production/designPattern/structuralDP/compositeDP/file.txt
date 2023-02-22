@@ -1,0 +1,20 @@
+
+in different dept s there is get staff num method
+to calculate i need to call all numbers from main method
+what can we do?
+
+if i 3 departments i need call 3 times
+if i have 10 department then 10
+what is you soln?
+creat one more class and put all class inside that class
+
+1. abstract Department //what is main difference btw abst and interface
+//2 abstract method
+abstract String getName
+
+2 Finance and Sales classes show all examples
+then create 3rd department
+
+3. HRDepartment
+
+4. CompositeRunner
